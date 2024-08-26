@@ -86,7 +86,7 @@ for(let i = 0; i < posts.length; i++){
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">
+                    Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">
                     ${posts[i].likes}</b> persone
                 </div>
             </div> 
@@ -101,6 +101,17 @@ for(let i = 0; i < likeButton.length; i++){
     likeButton[i].addEventListener("click", function(event){
         event.preventDefault();
         this.classList.toggle("like-button--liked");
+
+        const postId = this.dataset.postid;
+        const likeCounter = document.getElementById(`like-counter-${postId}`);
+        let j = parseInt(likeCounter.textContent);
+        if (this.classList.contains('like-button--liked')) {
+            j++;
+        } else {
+            j--;
+        }
+
+        likeCounter.textContent = j;
     })
 }
 
