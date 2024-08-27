@@ -64,7 +64,7 @@ const anno = [];
 const mese = [];
 const giorno = [];
 
-const dateUsa = []
+const dateUsa = [];
 
 posts.forEach(post => {
     dateUsa.push(post.created);
@@ -73,13 +73,10 @@ posts.forEach(post => {
 console.log(dateUsa);
 
 dateUsa.forEach(date => {
-
     const splitDate = date.split("-");
 
     anno.push(splitDate["0"]);
-
     giorno.push(splitDate["1"]);
-
     mese.push(splitDate["2"]);
 });
 
@@ -88,7 +85,7 @@ console.log(mese);
 console.log(giorno);
 
 for(let i = 0; i < posts.length; i++){
-    posts[i].created = `${giorno[i]}-${mese[i]}-${anno[i]}`
+    posts[i].created = `${giorno[i]}-${mese[i]}-${anno[i]}`;
     console.log(posts[i].created);
 }
 
@@ -96,25 +93,31 @@ for(let i = 0; i < posts.length; i++){
 
 // Iniziali Nome
 
+const name = [];
+const surname = [];
+const initialName = [];
+const initialSurname = [];
+const fullName = [];
 
+posts.forEach(post => {
+    fullName.push(post.author.name);
+})
 
+for(let i = 0; i < posts.length; i++){
+    splitName = fullName[i].split(" ");
+    name.push(splitName[0]);
+    surname.push(splitName[1]);
+        
+    initialName.push(name[i].at(0));
+    initialSurname.push(surname[i].at(0));
 
+    const bothInitial = initialName[i] + initialSurname[i];
+    console.log(bothInitial);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if (posts[i].author.image === null) {
+        posts[i].author.image = `https://via.placeholder.com/150?text=${bothInitial}`;
+    }
+}
 
 const myContainer = document.getElementById("container");
 
@@ -170,8 +173,6 @@ for(let i = 0; i < likeButton.length; i++){
         } else {
             j--;
         }
-
         likeCounter.textContent = j;
     })
 }
-
