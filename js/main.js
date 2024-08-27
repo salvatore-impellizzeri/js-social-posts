@@ -56,6 +56,66 @@ const posts = [
     }
 ];
 
+// BONUS
+
+// Cambio Data
+
+const anno = [];
+const mese = [];
+const giorno = [];
+
+const dateUsa = []
+
+posts.forEach(post => {
+    dateUsa.push(post.created);
+});
+
+console.log(dateUsa);
+
+dateUsa.forEach(date => {
+
+    const splitDate = date.split("-");
+
+    anno.push(splitDate["0"]);
+
+    giorno.push(splitDate["1"]);
+
+    mese.push(splitDate["2"]);
+});
+
+console.log(anno);
+console.log(mese);
+console.log(giorno);
+
+for(let i = 0; i < posts.length; i++){
+    posts[i].created = `${giorno[i]}-${mese[i]}-${anno[i]}`
+    console.log(posts[i].created);
+}
+
+// BONUS
+
+// Iniziali Nome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const myContainer = document.getElementById("container");
 
 for(let i = 0; i < posts.length; i++){
